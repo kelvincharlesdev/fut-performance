@@ -1,4 +1,4 @@
-import { MenuLink } from '@/models/menuLinks';
+import { MenuLink } from '@/models/MenuLinks';
 
 export interface NavMobileProps {
   menuLinks: MenuLink[];
