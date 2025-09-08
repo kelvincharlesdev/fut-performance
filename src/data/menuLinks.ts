@@ -8,8 +8,8 @@ export const menuLinks: MenuLink[] = [
     icon: Home,
   },
   {
-    label: 'Iniciar WL',
-    link: '/iniciar-wl',
+    label: 'Weekend League',
+    link: '/weekend-league',
     icon: Home,
   },
 ];
