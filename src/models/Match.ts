@@ -1,4 +1,5 @@
 export interface Match {
+  id: number;
   opponent: string;
   plataforma: "PS4" | "PS5" | "XBOX" | "PC";
   myGoals: string;
