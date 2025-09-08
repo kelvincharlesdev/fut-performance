@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FormContent } from '@/components/Form/';
+import { InitialWlForm } from '@/containers/Forms/InitialWlForm';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -16,8 +16,10 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold text-white">Bem vindo ao FUT!</h1>
+    <div className="flex flex-col items-center h-screen ">
+      <h1 className=" text-3xl md:text-5xl text-center md:text-left font-bold text-white">
+        Bem vindo ao FUT!
+      </h1>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -26,7 +28,7 @@ export default function Home() {
           </Button>
         </DialogTrigger>
 
-        <DialogContent>
+        <DialogContent className="text-primary-foreground">
           <DialogHeader>
             <DialogTitle>Nova Weekend League</DialogTitle>
             <DialogDescription>
@@ -34,7 +36,7 @@ export default function Home() {
             </DialogDescription>
           </DialogHeader>
 
-          <FormContent onSuccess={() => setOpen(false)} />
+          <InitialWlForm onSuccess={() => setOpen(false)} />
         </DialogContent>
       </Dialog>
     </div>
