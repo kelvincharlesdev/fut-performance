@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 import { Match, WeekendLeagueData } from "@/models";
 import { romanRanks } from "@/consts/romanRanks";
-import { HeroWLPage, StatisticsList } from "@/content/weekendLeague";
+import { HeroWLPage, MatchList, StatisticsList } from "@/content/weekendLeague";
 import {
   defeats,
   myGoals,
@@ -27,14 +27,26 @@ export default function WeekendLeague() {
   const allWls: WeekendLeagueData[] = JSON.parse(
     localStorage.getItem("wls") || "[]",
   );
+
   const wlActual = allWls.find((wl) => wl.status === "active");
+
+  console.log("WL ATUAL", wlActual);
 
   const onSubmit = (values: Match) => {
     try {
       if (!wlActual) return;
 
       wlActual.matches = wlActual.matches || [];
-      wlActual.matches.push(values);
+
+      // Gerando o ID
+      const matchId = wlActual.matches.length
+        ? Math.max(...wlActual.matches.map((m) => Number(m.id) || 0))
+        : 0;
+      const newMatch: Match = { ...values, id: matchId + 1 };
+
+      console.log("New Match", newMatch);
+
+      wlActual.matches.push(newMatch);
       localStorage.setItem("wls", JSON.stringify(allWls));
 
       toast.success("Partida enviada com sucesso!");
@@ -101,6 +113,7 @@ export default function WeekendLeague() {
         averageMyPossession={averageMyPossession}
         accuratePassPercentage={accuratePassPercentage}
       />
+      <MatchList wlAtiva={wlActual} />
 
       <div className="w-full flex justify-center mt-10">
         <Button
