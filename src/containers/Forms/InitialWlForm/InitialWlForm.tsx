@@ -81,7 +81,7 @@ export const InitialWlForm = ({ onSuccess }: FormContentProps) => {
               <FormLabel>Nome do Time (Opcional)</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Digite numero de derrotas"
+                  placeholder="Digite o nome do seu time"
                   type="text"
                   {...field}
                 />
