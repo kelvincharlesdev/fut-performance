@@ -13,7 +13,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { matchStatsSchema } from "@/schemas/formSchema";
 import { StatsRow } from "./components/StatsRow/StatsRow";
