@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { MatchStatsForm } from "@/containers/Forms/MatchStatsForm";
 
 import * as I from "./HeroWLPage.interface";
+import { Match } from "@/models";
 
 export const HeroWLPage = ({
   wlActive,
@@ -17,6 +18,14 @@ export const HeroWLPage = ({
   setOpen,
   onSubmit,
 }: I.HeroWLPageProps) => {
+  const handleFormSubmit = (values: Omit<Match, "id">) => {
+    const lastId = wlActive.matches?.length
+      ? Math.max(...wlActive.matches.map((m) => m.id))
+      : 0;
+
+    const newMatch: Match = { ...values, id: lastId + 1 };
+    onSubmit(newMatch);
+  };
   return (
     <section className="flex flex-col justify-center w-full items-center">
       <h1 className="text-2xl md:text-3xl text-center md:text-left font-semibold text-white">
@@ -43,7 +52,7 @@ export const HeroWLPage = ({
 
           <MatchStatsForm
             onSuccess={() => setOpen(false)}
-            onSubmit={onSubmit}
+            onSubmit={handleFormSubmit}
           />
         </DialogContent>
       </Dialog>
