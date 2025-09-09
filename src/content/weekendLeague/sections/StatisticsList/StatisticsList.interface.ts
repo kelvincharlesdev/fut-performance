@@ -1,4 +1,4 @@
-import { Match, WeekendLeagueData } from "@/app/weekend-league/page";
+import { WeekendLeagueData } from "@/models";
 
 export interface StatisticsListProps {
   wlActive: WeekendLeagueData;
